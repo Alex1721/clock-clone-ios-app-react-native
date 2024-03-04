@@ -3,7 +3,7 @@ import React from "react";
 
 const AddTimer = () => {
   return (
-    <View>
+    <View style={styles.container}>
       <Text>AddTimer</Text>
     </View>
   );
@@ -11,4 +11,11 @@ const AddTimer = () => {
 
 export default AddTimer;
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#1C1C1E",
+  },
+});
