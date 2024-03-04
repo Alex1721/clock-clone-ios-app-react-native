@@ -1,12 +1,14 @@
 import { View, Text, StyleSheet } from "react-native";
 import React from "react";
 
-const StopWatch = () => {
+const Alarm = () => {
   return (
     <View>
-      <Text>WorldClock</Text>
+      <Text>Alarm</Text>
     </View>
   );
 };
 
-export default StopWatch;
+export default Alarm;
+
+const styles = StyleSheet.create({});

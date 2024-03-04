@@ -1,15 +1,11 @@
 import FontAwesome from "@expo/vector-icons/FontAwesome";
-import {
-  DarkTheme,
-  DefaultTheme,
-  ThemeProvider,
-} from "@react-navigation/native";
 import { useFonts } from "expo-font";
-import { Stack } from "expo-router";
+import { Tabs } from "expo-router";
+import { StatusBar } from "expo-status-bar";
 import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
-
-import { useColorScheme } from "@/components/useColorScheme";
+import { Ionicons } from "@expo/vector-icons";
+import { DarkTheme, ThemeProvider } from "@react-navigation/native";
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -45,17 +41,60 @@ export default function RootLayout() {
     return null;
   }
 
-  return <RootLayoutNav />;
+  return (
+    <ThemeProvider value={DarkTheme}>
+      <RootLayoutNav />
+      <StatusBar style="light" />
+    </ThemeProvider>
+  );
 }
 
 function RootLayoutNav() {
-  const colorScheme = useColorScheme();
-
   return (
-    <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-      </Stack>
-    </ThemeProvider>
+    <Tabs
+      screenOptions={{
+        headerShown: false,
+        tabBarStyle: { backgroundColor: "black", borderTopWidth: 0 },
+        tabBarActiveTintColor: "orange",
+        tabBarInactiveTintColor: "#7C7C7C",
+      }}
+    >
+      <Tabs.Screen
+        name="(world-clock)"
+        options={{
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="globe-outline" size={size} color={color} />
+          ),
+          tabBarLabel: "World Clock",
+        }}
+      />
+      <Tabs.Screen
+        name="(alarms)"
+        options={{
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="alarm-outline" size={size} color={color} />
+          ),
+          tabBarLabel: "Alarms",
+        }}
+      />
+      <Tabs.Screen
+        name="(stopwatch)"
+        options={{
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="stopwatch-outline" size={size} color={color} />
+          ),
+          tabBarLabel: "Stopwatch",
+        }}
+      />
+      <Tabs.Screen
+        name="(timers)"
+        options={{
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="timer-outline" size={size} color={color} />
+          ),
+          tabBarLabel: "Timers",
+        }}
+      />
+    </Tabs>
   );
 }

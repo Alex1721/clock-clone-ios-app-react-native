@@ -1,12 +1,14 @@
 import { View, Text, StyleSheet } from "react-native";
 import React from "react";
 
-const WorldClock = () => {
+const AddTimer = () => {
   return (
     <View>
-      <Text>WorldClock</Text>
+      <Text>AddTimer</Text>
     </View>
   );
 };
 
-export default WorldClock;
+export default AddTimer;
+
+const styles = StyleSheet.create({});
