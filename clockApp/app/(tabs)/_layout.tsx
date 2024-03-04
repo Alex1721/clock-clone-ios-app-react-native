@@ -3,6 +3,7 @@ import FontAwesome from "@expo/vector-icons/FontAwesome";
 import { Link, Tabs } from "expo-router";
 import { Pressable } from "react-native";
 import { Fontisto } from "@expo/vector-icons";
+import { Ionicons } from "@expo/vector-icons";
 import Colors from "@/constants/Colors";
 import { useColorScheme } from "@/components/useColorScheme";
 import { useClientOnlyValue } from "@/components/useClientOnlyValue";
@@ -31,7 +32,9 @@ export default function TabLayout() {
         name="world-clock"
         options={{
           title: "World Clock",
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+          tabBarIcon: ({ size, color }) => (
+            <Fontisto name="world-o" size={size} color={color} />
+          ),
           headerRight: () => (
             <Link href="/modal" asChild>
               <Pressable>
@@ -52,21 +55,27 @@ export default function TabLayout() {
         name="index"
         options={{
           title: "Alarms",
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+          tabBarIcon: ({ size, color }) => (
+            <Ionicons name="alarm-outline" size={30} color={color} />
+          ),
         }}
       />
       <Tabs.Screen
         name="stopwatch"
         options={{
           title: "Stopwatch",
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+          tabBarIcon: ({ size, color }) => (
+            <Fontisto name="stopwatch" size={size} color={color} />
+          ),
         }}
       />
       <Tabs.Screen
-        name="timer"
+        name="timers"
         options={{
           title: "Timers",
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+          tabBarIcon: ({ size, color }) => (
+            <Ionicons name="timer-outline" size={28} color={color} />
+          ),
         }}
       />
     </Tabs>
