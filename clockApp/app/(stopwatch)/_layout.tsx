@@ -1,12 +1,9 @@
 import { View, Text } from "react-native";
+import { Stack } from "expo-router";
 import React from "react";
 
 const Layout = () => {
-  return (
-    <View>
-      <Text>Layout</Text>
-    </View>
-  );
+  return <Stack screenOptions={{ headerShown: false }} />;
 };
 
 export default Layout;
