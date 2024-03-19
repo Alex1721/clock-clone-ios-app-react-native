@@ -1,8 +1,7 @@
 import { View, Text, Pressable } from "react-native";
-import { Link } from "expo-router";
+import { Link, Stack } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
 import React from "react";
-import { Stack } from "expo-router";
 import Colors from "@/constants/Colors";
 
 const Layout = () => {
