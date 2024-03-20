@@ -9,7 +9,6 @@ const Layout = () => {
   return (
     <Stack
       screenOptions={{
-        headerStyle: { backgroundColor: "black" },
         headerTintColor: "orange",
       }}
     >
@@ -17,6 +16,7 @@ const Layout = () => {
         name="timers"
         options={{
           headerShown: false,
+          headerStyle: { backgroundColor: "black" },
         }}
       />
       <Stack.Screen
@@ -24,26 +24,6 @@ const Layout = () => {
         options={{
           presentation: "modal",
           animation: "slide_from_bottom",
-          headerShown: true,
-          headerTitle: () => (
-            <Text style={{ color: "white", fontSize: 20 }}>Ringtone</Text>
-          ),
-          headerStyle: { backgroundColor: Colors.grey },
-          headerRight: () => (
-            <Link href="/timers" asChild>
-              <Pressable>
-                <Text style={{ color: "orange", fontSize: 20 }}>Confirm</Text>
-              </Pressable>
-            </Link>
-          ),
-          headerLeft: () => (
-            <Link href="/timers" asChild>
-              <Pressable>
-                <Text style={{ color: "orange", fontSize: 20 }}>Cancel</Text>
-              </Pressable>
-            </Link>
-          ),
-          headerTransparent: true,
         }}
       />
     </Stack>

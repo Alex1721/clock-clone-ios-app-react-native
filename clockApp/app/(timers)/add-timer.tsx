@@ -1,57 +1,14 @@
-import {
-  Pressable,
-  Text,
-  StyleSheet,
-  SafeAreaView,
-  FlatList,
-  View,
-} from "react-native";
-import React from "react";
+import { StyleSheet, FlatList, View, Text, Pressable } from "react-native";
+import { Stack, Link, useLocalSearchParams } from "expo-router";
+import React, { useEffect, useState } from "react";
 
 import Colors from "@/constants/Colors";
 
-import Store from "@/components/timers/store";
-import StopLecture from "@/components/timers/stop-lecture";
+import Tone from "@/components/timers/ringtones/tone";
+import Store from "@/components/timers/ringtones/store";
+import StopLecture from "@/components/timers/ringtones/stop-lecture";
 
-import { Ionicons } from "@expo/vector-icons";
 import ringtones from "@/assets/data/ringtones.json";
-
-interface ToneProps {
-  tone: string;
-  index: number;
-  selected: boolean;
-  onPress: (tone: string) => void;
-}
-
-const Tone = ({ tone, index, selected, onPress }: ToneProps) => {
-  const backgroundColor = "grey";
-  const backgroundColorPressed = "#220D0B";
-
-  return (
-    <Pressable
-      onPress={onPress.bind(null, tone)}
-      style={({ pressed }) => [
-        styles.button,
-        {
-          backgroundColor: pressed ? backgroundColorPressed : backgroundColor,
-          borderTopRightRadius: index === 0 ? 10 : 0,
-          borderTopLeftRadius: index === 0 ? 10 : 0,
-          borderBottomEndRadius: index === ringtones.length - 1 ? 10 : 0,
-          borderBottomStartRadius: index === ringtones.length - 1 ? 10 : 0,
-        },
-      ]}
-    >
-      {selected ? (
-        <View style={{ width: 20 }}>
-          <Ionicons name="checkmark" size={24} color="orange" />
-        </View>
-      ) : (
-        <View style={{ width: 20 }} />
-      )}
-      <Text style={styles.text}>{tone}</Text>
-    </Pressable>
-  );
-};
 
 const SeparatorComponent = () => {
   return (
@@ -62,40 +19,110 @@ const SeparatorComponent = () => {
   );
 };
 
+interface HeaderRightProps {
+  param: string;
+}
+
+const HeaderRight = ({ param }: HeaderRightProps) => {
+  return (
+    <Link
+      href={{
+        pathname: "/timers",
+        params: { name: param },
+      }}
+      asChild
+    >
+      <Pressable>
+        <Text style={{ color: "orange", fontSize: 20 }}>Confirm</Text>
+      </Pressable>
+    </Link>
+  );
+};
+
+const HeaderLeft = () => {
+  return (
+    <Link href="/timers" asChild>
+      <Pressable>
+        <Text style={{ color: "orange", fontSize: 20 }}>Cancel</Text>
+      </Pressable>
+    </Link>
+  );
+};
+
+const HeaderTitle = () => {
+  return <Text style={{ color: "white", fontSize: 20 }}>Ringtone</Text>;
+};
+
 const AddTimer = () => {
-  const [selectedTone, setSelectedTone] = React.useState<string | null>(null);
+  const params = useLocalSearchParams();
+  const name = params.name;
+
+  const [selectedTone, setSelectedTone] = useState("Radar (per default)");
+  const [showBackgroundColor, setShowBackgroundColor] = useState(false);
+
+  useEffect(() => {
+    if (name) {
+      setSelectedTone(name as string);
+    }
+  }, [name]);
 
   const onPress = (tone: string) => {
     setSelectedTone(tone);
   };
 
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: Colors.grey }}>
-      <View style={styles.container}>
-        <FlatList
-          ListHeaderComponent={<Store />}
-          ListHeaderComponentStyle={{ marginVertical: 40 }}
-          ListFooterComponent={<StopLecture name={"Stop Lecture"} />}
-          ListFooterComponentStyle={{ marginVertical: 40 }}
-          ItemSeparatorComponent={() => {
-            return <SeparatorComponent />;
-          }}
-          showsVerticalScrollIndicator={true}
-          data={ringtones}
-          renderItem={({ item, index }) => {
-            return (
-              <Tone
-                tone={item.tone}
-                index={index}
-                selected={selectedTone === item.tone}
-                onPress={onPress}
-              />
-            );
-          }}
-          keyExtractor={(item) => item.tone}
-        />
-      </View>
-    </SafeAreaView>
+    <View style={{ flex: 1, backgroundColor: Colors.grey }}>
+      <Stack.Screen
+        options={
+          showBackgroundColor
+            ? {
+                headerTitle: () => <HeaderTitle />,
+                headerRight: () => <HeaderRight param={selectedTone} />,
+                headerLeft: () => <HeaderLeft />,
+                headerTransparent: true,
+                headerBlurEffect: "dark",
+              }
+            : {
+                headerTitle: () => <HeaderTitle />,
+                headerRight: () => <HeaderRight param={selectedTone} />,
+                headerLeft: () => <HeaderLeft />,
+                headerTransparent: true,
+                headerBlurEffect: "systemThickMaterialDark",
+              }
+        }
+      />
+
+      <FlatList
+        onScroll={(e) => {
+          if (e.nativeEvent.contentOffset.y > 0) {
+            setShowBackgroundColor(false);
+          } else {
+            setShowBackgroundColor(true);
+          }
+        }}
+        ListHeaderComponent={<Store />}
+        ListHeaderComponentStyle={{ marginVertical: 40 }}
+        ListFooterComponent={<StopLecture name={"Stop Lecture"} />}
+        ListFooterComponentStyle={{ marginTop: 40, marginBottom: 130 }}
+        ItemSeparatorComponent={() => {
+          return <SeparatorComponent />;
+        }}
+        showsVerticalScrollIndicator={true}
+        data={ringtones}
+        renderItem={({ item, index }) => {
+          return (
+            <Tone
+              tone={item.tone}
+              index={index}
+              selected={selectedTone === item.tone}
+              onPress={onPress}
+            />
+          );
+        }}
+        keyExtractor={(item) => item.tone}
+        style={styles.container}
+      />
+    </View>
   );
 };
 
@@ -104,21 +131,8 @@ export default AddTimer;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 20,
-  },
-  button: {
-    paddingLeft: 10,
-    color: "orange",
-    flexDirection: "row",
-    alignItems: "center",
-    gap: 20,
-  },
-  text: {
-    flex: 1,
-    paddingVertical: 15,
-    color: "white",
-    height: "100%",
-    fontSize: 18,
+    paddingVertical: 50,
+    paddingHorizontal: 15,
   },
   separatorContainer: {
     flexDirection: "row",

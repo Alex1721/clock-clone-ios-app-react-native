@@ -62,8 +62,8 @@ function RootLayoutNav() {
       <Tabs.Screen
         name="(world-clock)"
         options={{
-          tabBarIcon: ({ color, size }) => (
-            <Ionicons name="globe-outline" size={size} color={color} />
+          tabBarIcon: ({ color }) => (
+            <Ionicons name="globe-outline" size={26} color={color} />
           ),
           tabBarLabel: "World Clock",
         }}
@@ -71,8 +71,8 @@ function RootLayoutNav() {
       <Tabs.Screen
         name="(alarms)"
         options={{
-          tabBarIcon: ({ color, size }) => (
-            <Ionicons name="alarm-outline" size={size} color={color} />
+          tabBarIcon: ({ color }) => (
+            <Ionicons name="alarm" size={30} color={color} />
           ),
           tabBarLabel: "Alarms",
         }}
@@ -81,7 +81,7 @@ function RootLayoutNav() {
         name="(stopwatch)"
         options={{
           tabBarIcon: ({ color, size }) => (
-            <Ionicons name="stopwatch-outline" size={size} color={color} />
+            <Ionicons name="stopwatch" size={30} color={color} />
           ),
           tabBarLabel: "Stopwatch",
         }}
@@ -90,7 +90,7 @@ function RootLayoutNav() {
         name="(timers)"
         options={{
           tabBarIcon: ({ color, size }) => (
-            <Ionicons name="timer-outline" size={size} color={color} />
+            <Ionicons name="timer-outline" size={30} color={color} />
           ),
           tabBarLabel: "Timers",
         }}

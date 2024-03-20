@@ -1,29 +1,14 @@
 import { View, Text, StyleSheet, SafeAreaView, Pressable } from "react-native";
-import { Link } from "expo-router";
 import React from "react";
 
-import { MaterialIcons } from "@expo/vector-icons";
-
-const Ringtone = () => {
-  return (
-    <Link href="/add-timer" asChild>
-      <Pressable style={styles.button}>
-        <Text style={{ fontSize: 18, color: "white", flex: 1 }}>Ringtone</Text>
-        <View style={{ flexDirection: "row" }}>
-          <Text style={{ fontSize: 18, color: "white", opacity: 0.5 }}>
-            Stop the lecture
-          </Text>
-          <MaterialIcons name="keyboard-arrow-right" size={24} color="white" />
-        </View>
-      </Pressable>
-    </Link>
-  );
-};
+import Ringtone from "@/components/timers/ringtone";
+import Button from "@/components/button";
 
 const Timers = () => {
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <View style={styles.container}>
+        <View style={styles.buttonContainer}></View>
         <Ringtone />
       </View>
     </SafeAreaView>
@@ -37,13 +22,10 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 15,
     justifyContent: "center",
+    gap: 30,
   },
-  button: {
+  buttonContainer: {
     flexDirection: "row",
-    alignItems: "center",
     justifyContent: "space-between",
-    backgroundColor: "grey",
-    padding: 15,
-    borderRadius: 10,
   },
 });

@@ -19,5 +19,74 @@
   },
   {
     "tone": "Rock Anthem"
+  },
+  {
+    "tone": "Siren"
+  },
+  {
+    "tone": "Buzzer"
+  },
+  {
+    "tone": "Cuckoo Clock"
+  },
+  {
+    "tone": "Ding"
+  },
+  {
+    "tone": "Doorbell"
+  },
+  {
+    "tone": "Drum Roll"
+  },
+  {
+    "tone": "Fanfare"
+  },
+  {
+    "tone": "Fire Alarm"
+  },
+  {
+    "tone": "Fog Horn"
+  },
+  {
+    "tone": "Gong"
+  },
+  {
+    "tone": "Harpsichord"
+  },
+  {
+    "tone": "Horn"
+  },
+  {
+    "tone": "Laser"
+  },
+  {
+    "tone": "Morse Code"
+  },
+  {
+    "tone": "Piano"
+  },
+  {
+    "tone": "Police Siren"
+  },
+  {
+    "tone": "Ship Bell"
+  },
+  {
+    "tone": "Steam Whistle"
+  },
+  {
+    "tone": "Tambourine"
+  },
+  {
+    "tone": "Train Whistle"
+  },
+  {
+    "tone": "Trumpet"
+  },
+  {
+    "tone": "Vibraphone"
+  },
+  {
+    "tone": "Whistle"
   }
 ]
