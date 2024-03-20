@@ -51,6 +51,6 @@ const styles = StyleSheet.create({
     flex: 1,
     fontSize: 18,
     color: "white",
-    paddingVertical: 10,
+    paddingVertical: 15,
   },
 });

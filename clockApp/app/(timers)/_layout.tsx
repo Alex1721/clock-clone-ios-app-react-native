@@ -16,18 +16,7 @@ const Layout = () => {
       <Stack.Screen
         name="timers"
         options={{
-          headerTitle: "",
-          headerTransparent: true,
-          headerRight: () => (
-            <Link href="/add-timer" asChild>
-              <Pressable>
-                <Ionicons name="add" size={30} color="orange" />
-              </Pressable>
-            </Link>
-          ),
-          headerLeft: () => (
-            <Text style={{ color: "orange", fontSize: 20 }}>Edit</Text>
-          ),
+          headerShown: false,
         }}
       />
       <Stack.Screen
@@ -43,7 +32,7 @@ const Layout = () => {
           headerRight: () => (
             <Link href="/timers" asChild>
               <Pressable>
-                <Text style={{ color: "orange", fontSize: 20 }}>Done</Text>
+                <Text style={{ color: "orange", fontSize: 20 }}>Confirm</Text>
               </Pressable>
             </Link>
           ),

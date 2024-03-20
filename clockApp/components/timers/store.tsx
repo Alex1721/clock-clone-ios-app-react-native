@@ -41,15 +41,15 @@ export default Store;
 
 const styles = StyleSheet.create({
   container: {
-    gap: 5,
+    gap: 7,
   },
   store: {
     fontSize: 14,
     color: "white",
-    paddingLeft: 10,
+    paddingLeft: 15,
   },
   button: {
-    padding: 10,
+    padding: 15,
     borderRadius: 10,
     color: "orange",
   },

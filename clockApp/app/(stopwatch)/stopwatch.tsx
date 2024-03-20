@@ -3,7 +3,6 @@ import React, { useState, useRef, useEffect } from "react";
 
 import Timer from "@/components/stopwatch/timer";
 import Lap from "@/components/stopwatch/lap";
-import Button from "@/components/stopwatch/button";
 
 const StopWatch = () => {
   const [isActive, setIsActive] = useState(false);
@@ -48,9 +47,6 @@ const StopWatch = () => {
             {("0" + ((time / 10) % 100)).slice(-2)}
           </Text>
         </View>
-        <Button type="start" onPress={handleStart} />
-        <Button type="stop" onPress={handlePauseResume} />
-        <Button type="reset" onPress={handleReset} />
       </View>
     </SafeAreaView>
   );
