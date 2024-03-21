@@ -2,6 +2,8 @@ import { View, Text, StyleSheet, Pressable } from "react-native";
 import { Link, useLocalSearchParams } from "expo-router";
 import React from "react";
 
+import Colors from "@/constants/Colors";
+
 import { MaterialIcons } from "@expo/vector-icons";
 
 const Ringtone = () => {
@@ -35,7 +37,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    backgroundColor: "grey",
+    backgroundColor: Colors.grey,
     padding: 15,
     borderRadius: 10,
   },

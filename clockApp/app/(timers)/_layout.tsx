@@ -13,7 +13,7 @@ const Layout = () => {
       }}
     >
       <Stack.Screen
-        name="timers"
+        name="timer"
         options={{
           headerShown: false,
           headerStyle: { backgroundColor: "black" },

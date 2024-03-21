@@ -8,7 +8,7 @@ interface StopLectureProps {
 }
 
 const StopLecture = ({ name }: StopLectureProps) => {
-  const backgroundColor = "grey";
+  const backgroundColor = "#2C2C2E";
   const backgroundColorPressed = "#220D0B";
   const [selected, setSelected] = React.useState(false);
 

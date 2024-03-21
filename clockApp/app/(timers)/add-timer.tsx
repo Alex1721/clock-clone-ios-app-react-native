@@ -1,4 +1,5 @@
 import { StyleSheet, FlatList, View, Text, Pressable } from "react-native";
+import { Audio } from "expo-av";
 import { Stack, Link, useLocalSearchParams } from "expo-router";
 import React, { useEffect, useState } from "react";
 
@@ -27,7 +28,7 @@ const HeaderRight = ({ param }: HeaderRightProps) => {
   return (
     <Link
       href={{
-        pathname: "/timers",
+        pathname: "/timer",
         params: { name: param },
       }}
       asChild
@@ -41,7 +42,7 @@ const HeaderRight = ({ param }: HeaderRightProps) => {
 
 const HeaderLeft = () => {
   return (
-    <Link href="/timers" asChild>
+    <Link href="/timer" asChild>
       <Pressable>
         <Text style={{ color: "orange", fontSize: 20 }}>Cancel</Text>
       </Pressable>
@@ -60,14 +61,37 @@ const AddTimer = () => {
   const [selectedTone, setSelectedTone] = useState("Radar (per default)");
   const [showBackgroundColor, setShowBackgroundColor] = useState(false);
 
+  const [sound, setSound] = useState<Audio.Sound | null>();
+
   useEffect(() => {
     if (name) {
       setSelectedTone(name as string);
     }
   }, [name]);
 
+  const playSound = async () => {
+    console.log("Loading Sound");
+    const { sound } = await Audio.Sound.createAsync(
+      require("@/assets/audio/timer.mp3")
+    );
+    setSound(sound);
+
+    console.log("Playing Sound");
+    await sound.playAsync();
+  };
+
+  useEffect(() => {
+    return sound
+      ? () => {
+          console.log("Unloading Sound");
+          sound.unloadAsync();
+        }
+      : undefined;
+  }, [sound]);
+
   const onPress = (tone: string) => {
     setSelectedTone(tone);
+    playSound();
   };
 
   return (
@@ -136,12 +160,12 @@ const styles = StyleSheet.create({
   },
   separatorContainer: {
     flexDirection: "row",
+    backgroundColor: "#2C2C2E",
     gap: 20,
-    backgroundColor: "grey",
   },
   separator: {
     flex: 1,
-    borderBottomWidth: 0.35,
+    borderBottomWidth: 0.65,
     borderColor: "white",
   },
 });

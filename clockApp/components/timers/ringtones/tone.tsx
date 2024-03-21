@@ -1,4 +1,5 @@
 import { View, Text, Pressable, StyleSheet } from "react-native";
+import { Audio } from "expo-av";
 import React from "react";
 
 import { Ionicons } from "@expo/vector-icons";
@@ -12,7 +13,7 @@ interface ToneProps {
 }
 
 const Tone = ({ tone, index, selected, onPress }: ToneProps) => {
-  const backgroundColor = "grey";
+  const backgroundColor = "#2C2C2E";
   const backgroundColorPressed = "#220D0B";
 
   return (

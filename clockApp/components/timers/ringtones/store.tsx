@@ -2,7 +2,7 @@ import { View, Text, StyleSheet, Pressable } from "react-native";
 import React from "react";
 
 const Store = () => {
-  const backgroundColor = "grey";
+  const backgroundColor = "#2C2C2E";
   const backgroundColorPressed = "#220D0B";
   const [selected, setSelected] = React.useState(false);
 

@@ -1,10 +1,11 @@
-import { View, Text, StyleSheet, SafeAreaView, Pressable } from "react-native";
+import { View, StyleSheet, SafeAreaView } from "react-native";
+import { Audio } from "expo-av";
 import React from "react";
 
 import Ringtone from "@/components/timers/ringtone";
 import Button from "@/components/button";
 
-const Timers = () => {
+const Timer = () => {
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <View style={styles.container}>
@@ -15,7 +16,7 @@ const Timers = () => {
   );
 };
 
-export default Timers;
+export default Timer;
 
 const styles = StyleSheet.create({
   container: {
