@@ -31,13 +31,29 @@ const RenderItem = ({ item }: { item: string }) => {
   );
 };
 
-const RenderSection = ({ title }: { title: string }) => {
-  return <Text style={styles.renderSection}>{title}</Text>;
+const RenderSection = ({
+  title,
+  isTopSection,
+}: {
+  title: string;
+  isTopSection: boolean;
+}) => {
+  return (
+    <Text
+      style={[
+        styles.renderSection,
+        { backgroundColor: isTopSection ? "red" : "green" },
+      ]}
+    >
+      {title}
+    </Text>
+  );
 };
 
 const AddClock = () => {
   const [data, setData] = useState(cities);
   const [filteredData, setFilteredData] = useState(data);
+  const [isTopSection, setIsTopSection] = useState(true);
 
   const searchFilterFunction = (text: string) => {
     if (text) {
@@ -60,6 +76,11 @@ const AddClock = () => {
     } else {
       setFilteredData(data);
     }
+  };
+
+  const onViewableItemsChanged = ({ viewableItems }: any) => {
+    // Check if the first viewable item is the first section
+    setIsTopSection(viewableItems[0]?.section?.index === 0);
   };
   return (
     <SafeAreaView
@@ -87,7 +108,7 @@ const AddClock = () => {
         sections={filteredData}
         keyExtractor={(item, index) => item + index}
         renderSectionHeader={({ section: { title } }) => (
-          <RenderSection title={title} />
+          <RenderSection title={title} isTopSection={isTopSection} />
         )}
         renderItem={({ item }) => <RenderItem item={item} />}
         SectionSeparatorComponent={() => (
@@ -100,6 +121,7 @@ const AddClock = () => {
         contentInsetAdjustmentBehavior={"scrollableAxes"}
         stickySectionHeadersEnabled={true}
         showsVerticalScrollIndicator={true}
+        onViewableItemsChanged={onViewableItemsChanged}
       />
     </SafeAreaView>
   );
