@@ -1,102 +1,152 @@
 [
   {
     "city": "London",
-    "country": "United Kingdom"
+    "country": "United Kingdom",
+    "time_zone": "Today, +1HRS",
+    "time": "12:14"
   },
   {
     "city": "Moscow",
-    "country": "Russia"
+    "country": "Russia",
+    "time_zone": "Today, +3HRS",
+    "time": "14:37"
   },
   {
     "city": "Berlin",
-    "country": "Germany"
+    "country": "Germany",
+    "time_zone": "Today, +1HRS",
+    "time": "6:24"
   },
   {
     "city": "Paris",
-    "country": "France"
+    "country": "France",
+    "time_zone": "Today, +5HRS",
+    "time": "8:24"
   },
   {
     "city": "New York",
-    "country": "United States"
+    "country": "United States",
+    "time_zone": "Today, +5HRS",
+    "time": "9:45"
   },
   {
     "city": "Tokyo",
-    "country": "Japan"
+    "country": "Japan",
+    "time_zone": "Today, +5HRS",
+    "time": "20:33"
   },
   {
     "city": "Shanghai",
-    "country": "China"
+    "country": "China",
+    "time_zone": "Today, +5HRS",
+    "time": "19:23"
   },
   {
     "city": "Sao Paulo",
-    "country": "Brazil"
+    "country": "Brazil",
+    "time_zone": "Today, +5HRS",
+    "time": "10:56"
   },
   {
     "city": "Delhi",
-    "country": "India"
+    "country": "India",
+    "time_zone": "Today, +5HRS",
+    "time": "15:59"
   },
   {
     "city": "Mumbai",
-    "country": "India"
+    "country": "India",
+    "time_zone": "Today, +5HRS",
+    "time": "2:30"
   },
   {
     "city": "Cairo",
-    "country": "Egypt"
+    "country": "Egypt",
+    "time_zone": "Today, +5HRS",
+    "time": "18:17"
   },
   {
     "city": "Sydney",
-    "country": "Australia"
+    "country": "Australia",
+    "time_zone": "Today, +5HRS",
+    "time": "23:22"
   },
   {
     "city": "Rio de Janeiro",
-    "country": "Brazil"
+    "country": "Brazil",
+    "time_zone": "Today, +5HRS",
+    "time": "11:45"
   },
   {
     "city": "Toronto",
-    "country": "Canada"
+    "country": "Canada",
+    "time_zone": "Today, +5HRS",
+    "time": "9:45"
   },
   {
     "city": "Rome",
-    "country": "Italy"
+    "country": "Italy",
+    "time_zone": "Today, +5HRS",
+    "time": "7:24"
   },
   {
     "city": "Madrid",
-    "country": "Spain"
+    "country": "Spain",
+    "time_zone": "Today, +5HRS",
+    "time": "15:24"
   },
   {
     "city": "Seoul",
-    "country": "South Korea"
+    "country": "South Korea",
+    "time_zone": "Today, +5HRS",
+    "time": "21:33"
   },
   {
     "city": "Mexico City",
-    "country": "Mexico"
+    "country": "Mexico",
+    "time_zone": "Today, +5HRS",
+    "time": "8:45"
   },
   {
     "city": "Cape Town",
-    "country": "South Africa"
+    "country": "South Africa",
+    "time_zone": "Today, +5HRS",
+    "time": "13:17"
   },
   {
     "city": "Dubai",
-    "country": "United Arab Emirates"
+    "country": "United Arab Emirates",
+    "time_zone": "Today, +5HRS",
+    "time": "16:48"
   },
   {
     "city": "Hanoi",
-    "country": "Vietnam"
+    "country": "Vietnam",
+    "time_zone": "Today, +5HRS",
+    "time": "17:55"
   },
   {
     "city": "Buenos Aires",
-    "country": "Argentina"
+    "country": "Argentina",
+    "time_zone": "Today, +5HRS",
+    "time": "18.22"
   },
   {
     "city": "Athens",
-    "country": "Greece"
+    "country": "Greece",
+    "time_zone": "Today, +5HRS",
+    "time": "4:24"
   },
   {
     "city": "Stockholm",
-    "country": "Sweden"
+    "country": "Sweden",
+    "time_zone": "Today, +5HRS",
+    "time": "22.10"
   },
   {
     "city": "Lisbon",
-    "country": "Portugal"
+    "country": "Portugal",
+    "time_zone": "Today, +5HRS",
+    "time": "23.04"
   }
 ]

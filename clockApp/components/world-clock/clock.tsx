@@ -2,16 +2,16 @@ import { View, Text, StyleSheet } from "react-native";
 import React from "react";
 
 interface AlarmProps {
-  date: string;
+  timezone: string;
   city: string;
   time: string;
 }
 
-const Alarm = ({ date, city, time }: AlarmProps) => {
+const Alarm = ({ timezone, city, time }: AlarmProps) => {
   return (
     <View style={styles.container}>
       <View style={{ gap: 5 }}>
-        <Text style={styles.date}>{date}</Text>
+        <Text style={styles.date}>{timezone}</Text>
         <Text style={styles.city}>{city}</Text>
       </View>
       <View>

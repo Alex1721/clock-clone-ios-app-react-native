@@ -1,11 +1,11 @@
 import { View, Text, StyleSheet, FlatList, Pressable } from "react-native";
 import { Link, Stack, Tabs } from "expo-router";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import Clock from "@/components/world-clock/clock";
 
 import { Ionicons } from "@expo/vector-icons";
-import cities from "@/assets/data/cities.json";
+import cities from "@/assets/data/europe-city.json";
 
 const HeaderRight = () => {
   return (
@@ -27,6 +27,23 @@ const HeaderTitle = () => {
 
 const WorldClock = () => {
   const [showBackgroundColor, setShowBackgroundColor] = useState(true);
+
+  const [data, setData] = useState<{}[]>();
+
+  const fetchData = async ({ city }: any) => {
+    try {
+      const response = await fetch(
+        `http://worldtimeapi.org/api/timezone/Europe/${city}/`
+      );
+      const data = await response.json();
+      if (data) {
+        return data;
+      }
+    } catch (error) {
+      console.error(error);
+      return null;
+    }
+  };
 
   return (
     <View style={{ flex: 1, backgroundColor: "black" }}>
@@ -71,11 +88,8 @@ const WorldClock = () => {
         ListFooterComponentStyle={{ marginTop: 40, marginBottom: 130 }}
         data={cities}
         renderItem={({ item }) => {
-          return (
-            <Clock date={"Today, + 0HRS"} city={item.city} time={"9:41"} />
-          );
+          return null;
         }}
-        keyExtractor={(item) => item.city}
         style={styles.container}
       />
     </View>

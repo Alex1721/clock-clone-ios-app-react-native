@@ -1,0 +1,106 @@
+[
+  {
+    "title": "A",
+    "data": ["Amsterdam", "Athens", "Antwerp", "Aberdeen", "Alicante"]
+  },
+  {
+    "title": "B",
+    "data": ["Berlin", "Belgrade", "Brussels", "Budapest", "Bucharest"]
+  },
+  {
+    "title": "C",
+    "data": ["Cologne", "Cork", "Copenhagen", "Cannes"]
+  },
+  {
+    "title": "D",
+    "data": ["Dublin", "Dusseldorf", "Dresden", "Dortmund", "Dijon"]
+  },
+  {
+    "title": "E",
+    "data": ["Edinburgh", "Eindhoven", "Essen", "Exeter", "Erfurt"]
+  },
+  {
+    "title": "F",
+    "data": ["Frankfurt", "Florence", "Faro", "Funchal"]
+  },
+  {
+    "title": "G",
+    "data": ["Glasgow", "Geneva", "Gdansk", "Ghent", "Girona"]
+  },
+  {
+    "title": "H",
+    "data": ["Hamburg", "Helsinki", "Hanover"]
+  },
+  {
+    "title": "I",
+    "data": ["Inverness", "Ibiza", "Istanbul", "Izmir"]
+  },
+  {
+    "title": "J",
+    "data": ["Jersey", "Jerez"]
+  },
+  {
+    "title": "K",
+    "data": ["Krakow", "Kiev", "Kos"]
+  },
+  {
+    "title": "L",
+    "data": ["Lisbon", "Lyon", "Lille", "Ljubljana"]
+  },
+  {
+    "title": "M",
+    "data": ["Munich", "Madrid", "Milan", "Manchester", "Marseille"]
+  },
+  {
+    "title": "N",
+    "data": ["Nice", "Naples", "Nuremberg", "Nantes"]
+  },
+  {
+    "title": "O",
+    "data": ["Oslo", "Oporto", "Olbia"]
+  },
+  {
+    "title": "P",
+    "data": ["Paris", "Prague", "Palma", "Pisa"]
+  },
+  {
+    "title": "Q",
+    "data": ["Quimper"]
+  },
+  {
+    "title": "R",
+    "data": ["Rome", "Reykjavik", "Riga"]
+  },
+  {
+    "title": "S",
+    "data": ["Stockholm", "Seville", "Sofia", "Salzburg"]
+  },
+  {
+    "title": "T",
+    "data": ["Toulouse", "Thessaloniki"]
+  },
+  {
+    "title": "U",
+    "data": ["Utrecht"]
+  },
+  {
+    "title": "V",
+    "data": ["Vienna", "Venice", "Valencia"]
+  },
+  {
+    "title": "W",
+    "data": ["Warsaw", "Wroclaw"]
+  },
+  {
+    "title": "X",
+    "data": ["Xanthi"]
+  },
+  {
+    "title": "Y",
+    "data": ["Yerevan"]
+  },
+  {
+    "title": "Z",
+    "data": ["Zurich", "Zadar"]
+  }
+]
