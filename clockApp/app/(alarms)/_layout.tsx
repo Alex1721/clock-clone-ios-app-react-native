@@ -74,7 +74,7 @@ const Layout = () => {
                   size={24}
                   color="orange"
                 />
-                <Text style={{ color: "orange", fontSize: 18 }}>Cancel</Text>
+                <Text style={{ color: "orange", fontSize: 20 }}>Back</Text>
               </Pressable>
             </Link>
           ),
@@ -98,7 +98,7 @@ const Layout = () => {
                   size={24}
                   color="orange"
                 />
-                <Text style={{ color: "orange", fontSize: 18 }}>Cancel</Text>
+                <Text style={{ color: "orange", fontSize: 18 }}>Back</Text>
               </Pressable>
             </Link>
           ),
