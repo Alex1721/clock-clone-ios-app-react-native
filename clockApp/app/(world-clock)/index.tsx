@@ -1,15 +1,26 @@
-import { View, Text, StyleSheet, FlatList, Pressable } from "react-native";
-import { Link, Stack, Tabs } from "expo-router";
+import {
+  View,
+  StyleSheet,
+  FlatList,
+  Pressable,
+  SafeAreaView,
+} from "react-native";
+import { Link, Stack, useLocalSearchParams } from "expo-router";
 import React, { useEffect, useState } from "react";
 
 import Clock from "@/components/world-clock/clock";
 
 import { Ionicons } from "@expo/vector-icons";
-import cities from "@/assets/data/europe-city.json";
 
-const HeaderRight = () => {
+const HeaderRight = ({ cities }: { cities: string[] }) => {
   return (
-    <Link href="/add-clock" asChild>
+    <Link
+      href={{
+        pathname: "/add-clock",
+        params: { cities: cities },
+      }}
+      asChild
+    >
       <Pressable>
         <Ionicons name="add" size={30} color="orange" />
       </Pressable>
@@ -17,50 +28,60 @@ const HeaderRight = () => {
   );
 };
 
-const HeaderLeft = () => {
-  return <Text style={{ color: "orange", fontSize: 20 }}>Edit</Text>;
-};
-
-const HeaderTitle = () => {
-  return <Text style={{ color: "white", fontSize: 20 }}>Clocks</Text>;
-};
-
 const WorldClock = () => {
+  const { city } = useLocalSearchParams();
   const [showBackgroundColor, setShowBackgroundColor] = useState(true);
+  const [cities, setCities] = useState<string[]>([]);
+  const [data, setData] = useState<any>([]);
 
-  const [data, setData] = useState<{}[]>();
-
-  const fetchData = async ({ city }: any) => {
+  const fetchData = async (item: string) => {
     try {
       const response = await fetch(
-        `http://worldtimeapi.org/api/timezone/Europe/${city}/`
+        "https://api.api-ninjas.com/v1/worldtime?city=" + item,
+        {
+          headers: {
+            "X-Api-Key": "N464mc2+05q91tDRf9z+DQ==rowvHmmcSNcKW7ca",
+          },
+        }
       );
-      const data = await response.json();
-      if (data) {
-        return data;
-      }
+      const json = await response.json();
+      setData([
+        ...data,
+        {
+          name: item,
+          day_of_week: json.day_of_week,
+          date: json.datetime.substring(11, 16),
+        },
+      ]);
     } catch (error) {
       console.error(error);
-      return null;
     }
   };
 
+  useEffect(() => {
+    const cityName = city as string;
+    if (!cities.includes(cityName) && cityName !== undefined) {
+      setCities([...cities, cityName]);
+      fetchData(cityName);
+    }
+  }, [city]);
+
   return (
-    <View style={{ flex: 1, backgroundColor: "black" }}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: "black" }}>
       <Stack.Screen
         options={
           showBackgroundColor
             ? {
-                headerTitle: "",
-                headerRight: () => <HeaderRight />,
-                headerLeft: () => <HeaderLeft />,
+                headerTitle: "World Clock",
+                headerLargeTitle: true,
+                headerTintColor: "white",
+                headerRight: () => <HeaderRight cities={cities} />,
                 headerTransparent: true,
                 headerBlurEffect: "extraLight",
               }
             : {
-                headerTitle: () => <HeaderTitle />,
-                headerRight: () => <HeaderRight />,
-                headerLeft: () => <HeaderLeft />,
+                headerTitle: "World Clock",
+                headerRight: () => <HeaderRight cities={cities} />,
                 headerTransparent: true,
                 headerBlurEffect: "dark",
               }
@@ -75,24 +96,26 @@ const WorldClock = () => {
           }
         }}
         ListHeaderComponent={
-          <Text style={{ color: "white", fontSize: 34, fontWeight: "bold" }}>
-            World Clock
-          </Text>
+          <View
+            style={{
+              borderBottomWidth: 1,
+              borderBottomColor: "#1C1C1E",
+            }}
+          />
         }
-        ListHeaderComponentStyle={{
-          borderBottomWidth: 1,
-          borderColor: "#1C1C1E",
-          paddingVertical: 10,
-          paddingHorizontal: 5,
-        }}
-        ListFooterComponentStyle={{ marginTop: 40, marginBottom: 130 }}
-        data={cities}
+        data={data}
         renderItem={({ item }) => {
-          return null;
+          return (
+            <Clock
+              city={item.name}
+              day_of_week={item.day_of_week}
+              time={item.date}
+            />
+          );
         }}
         style={styles.container}
       />
-    </View>
+    </SafeAreaView>
   );
 };
 
@@ -101,9 +124,6 @@ export default WorldClock;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "black",
-    paddingHorizontal: 10,
-    paddingVertical: 90,
-    //backgroundColor: "#1C1C1E",
+    paddingHorizontal: 15,
   },
 });

@@ -10,6 +10,7 @@ const Layout = () => {
       screenOptions={{
         headerStyle: { backgroundColor: "black" },
         headerTintColor: "orange",
+        headerShown: true,
       }}
     >
       <Stack.Screen
@@ -34,9 +35,8 @@ const Layout = () => {
         options={{
           presentation: "modal",
           animation: "slide_from_bottom",
-          headerShown: true,
           headerTitle: () => (
-            <Text style={{ color: "white", fontSize: 20 }}>Add Alarm</Text>
+            <Text style={{ color: "white", fontSize: 20 }}>New Alarm</Text>
           ),
           headerStyle: { backgroundColor: Colors.grey },
           headerRight: () => (

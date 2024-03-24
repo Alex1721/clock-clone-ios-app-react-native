@@ -6,58 +6,54 @@ import {
   SafeAreaView,
   Pressable,
 } from "react-native";
-import { Stack } from "expo-router";
+import { Stack, useLocalSearchParams } from "expo-router";
 import { Link } from "expo-router";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import Colors from "@/constants/Colors";
-import cities from "@/assets/data/europe-city.json";
+import Cities from "@/assets/data/europe-city.json";
 
-const RenderItem = ({ item }: { item: string }) => {
+interface RenderItemProps {
+  item: string;
+  section: any;
+}
+
+const RenderItem = ({ item, section }: RenderItemProps) => {
+  const isLastItemInSection =
+    section.data.indexOf(item) === section.data.length - 1;
+  const style = isLastItemInSection ? styles.renderLastItem : styles.renderItem;
   return (
     <Link
       href={{
         pathname: "/",
-        params: {
-          name: item,
-        },
+        params: { city: item },
       }}
       asChild
     >
-      <Pressable style={styles.renderItem}>
-        <Text style={styles.renderText}>{item}</Text>
+      <Pressable style={style}>
+        <Text style={{ color: "white", fontSize: 18 }}>{item}</Text>
       </Pressable>
     </Link>
   );
 };
 
-const RenderSection = ({
-  title,
-  isTopSection,
-}: {
-  title: string;
-  isTopSection: boolean;
-}) => {
+const RenderSection = ({ title }: { title: string }) => {
   return (
-    <Text
-      style={[
-        styles.renderSection,
-        { backgroundColor: isTopSection ? "red" : "green" },
-      ]}
-    >
-      {title}
-    </Text>
+    <View style={styles.renderSection}>
+      <Text style={{ fontWeight: "bold", color: "#99999B", fontSize: 16 }}>
+        {title}
+      </Text>
+    </View>
   );
 };
 
 const AddClock = () => {
-  const [data, setData] = useState(cities);
-  const [filteredData, setFilteredData] = useState(data);
-  const [isTopSection, setIsTopSection] = useState(true);
+  const { cities } = useLocalSearchParams();
+  const [filteredData, setFilteredData] = useState(Cities);
 
   const searchFilterFunction = (text: string) => {
     if (text) {
-      const dataArray = data.filter((item) => {
+      const dataArray = Cities.filter((item) => {
         const letter = item.title[0].toUpperCase();
         const textData = text[0].toUpperCase();
         if (letter === textData) {
@@ -74,14 +70,23 @@ const AddClock = () => {
       ];
       setFilteredData(newData);
     } else {
-      setFilteredData(data);
+      setFilteredData(Cities);
     }
   };
 
-  const onViewableItemsChanged = ({ viewableItems }: any) => {
-    // Check if the first viewable item is the first section
-    setIsTopSection(viewableItems[0]?.section?.index === 0);
-  };
+  useEffect(() => {
+    const manyCities = cities as string[];
+    const updateData = Cities.map((item) => {
+      const title = item.title;
+      const data = item.data.filter((city) => !manyCities.includes(city));
+      return {
+        title: title,
+        data: data,
+      };
+    });
+    setFilteredData(updateData);
+  }, [cities]);
+
   return (
     <SafeAreaView
       style={{
@@ -93,9 +98,7 @@ const AddClock = () => {
         options={{
           headerSearchBarOptions: {
             placeholder: "Search",
-            barTintColor: "white",
-            hintTextColor: "white",
-            textColor: "black",
+            textColor: "white",
             hideWhenScrolling: false,
             hideNavigationBar: false,
             onChangeText: (event) => {
@@ -108,20 +111,14 @@ const AddClock = () => {
         sections={filteredData}
         keyExtractor={(item, index) => item + index}
         renderSectionHeader={({ section: { title } }) => (
-          <RenderSection title={title} isTopSection={isTopSection} />
+          <RenderSection title={title} />
         )}
-        renderItem={({ item }) => <RenderItem item={item} />}
-        SectionSeparatorComponent={() => (
-          <View
-            style={{
-              marginVertical: 10,
-            }}
-          />
+        renderItem={({ item, section }) => (
+          <RenderItem item={item} section={section} />
         )}
         contentInsetAdjustmentBehavior={"scrollableAxes"}
         stickySectionHeadersEnabled={true}
         showsVerticalScrollIndicator={true}
-        onViewableItemsChanged={onViewableItemsChanged}
       />
     </SafeAreaView>
   );
@@ -131,20 +128,22 @@ export default AddClock;
 
 const styles = StyleSheet.create({
   renderSection: {
-    paddingHorizontal: 15,
     paddingVertical: 5,
-    fontWeight: "bold",
-    color: "white",
-    backgroundColor: "#333333",
-  },
-  renderItem: {
     paddingHorizontal: 15,
-    paddingVertical: 10,
+    backgroundColor: "#272729",
+  },
+
+  renderItem: {
+    marginHorizontal: 15,
+    paddingVertical: 15,
     borderBottomWidth: 1,
     borderBottomColor: "rgba(255, 255, 255, 0.1)",
   },
-  renderText: {
-    color: "white",
-    fontSize: 18,
+  renderLastItem: {
+    marginHorizontal: 15,
+    marginBottom: 30,
+    paddingVertical: 15,
+    borderBottomWidth: 1,
+    borderBottomColor: "rgba(255, 255, 255, 0.1)",
   },
 });

@@ -20,7 +20,7 @@ const Layout = () => {
           ),
           headerBackTitleVisible: false,
           headerStyle: {
-            backgroundColor: "#333333",
+            backgroundColor: "#272729",
           },
         }}
       />
