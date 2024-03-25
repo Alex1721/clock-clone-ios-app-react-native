@@ -9,7 +9,15 @@ To get started, follow these simple steps:
 ### Clone the Repository
 
 ```bash
-git clone https://github.com/mfts/papermark.git
+git clone https://github.com/Alex1721/clock-clone-ios-app-react-native.git
+cd clockApp
+```
+
+### Install Dependencies
+
+```bash
+npm install
+```
 
 <!-- start:code block -->
 # Clone this repository
