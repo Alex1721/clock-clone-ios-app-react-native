@@ -1,12 +1,11 @@
-import { View, Text, FlatList, StyleSheet } from "react-native";
+import { View, FlatList, StyleSheet } from "react-native";
 import React from "react";
 
 import Store from "@/components/timers/ringtones/store";
 import StopLecture from "./timers/ringtones/stop-lecture";
+import Tone from "@/components/timers/ringtones/tone";
 
 import ringtones from "@/assets/data/ringtones.json";
-
-import Tone from "@/components/timers/ringtones/tone";
 
 interface RingtoneListProps {
   selectedTone: string;
@@ -24,7 +23,7 @@ const SeparatorComponent = () => {
 
 const RingtoneList = ({ selectedTone, onPress }: RingtoneListProps) => {
   return (
-    <View>
+    <>
       <FlatList
         ListHeaderComponent={<Store />}
         ListHeaderComponentStyle={{ marginVertical: 40 }}
@@ -35,6 +34,9 @@ const RingtoneList = ({ selectedTone, onPress }: RingtoneListProps) => {
         }}
         showsVerticalScrollIndicator={true}
         data={ringtones}
+        keyExtractor={(item) => item.tone}
+        style={{ paddingHorizontal: 15 }}
+        contentInsetAdjustmentBehavior="automatic"
         renderItem={({ item, index }) => {
           return (
             <Tone
@@ -45,10 +47,8 @@ const RingtoneList = ({ selectedTone, onPress }: RingtoneListProps) => {
             />
           );
         }}
-        keyExtractor={(item) => item.tone}
-        style={styles.container}
       />
-    </View>
+    </>
   );
 };
 
@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
   },
   separator: {
     flex: 1,
-    borderBottomWidth: 0.65,
-    borderColor: "white",
+    borderBottomWidth: 1,
+    borderColor: "rgba(255, 255, 255, 0.1)",
   },
 });

@@ -1,10 +1,4 @@
-import {
-  View,
-  StyleSheet,
-  FlatList,
-  Pressable,
-  SafeAreaView,
-} from "react-native";
+import { StyleSheet, FlatList, Pressable, View } from "react-native";
 import { Link, Stack, useLocalSearchParams } from "expo-router";
 import React, { useEffect, useState } from "react";
 
@@ -30,7 +24,6 @@ const HeaderRight = ({ cities }: { cities: string[] }) => {
 
 const WorldClock = () => {
   const { city } = useLocalSearchParams();
-  const [showBackgroundColor, setShowBackgroundColor] = useState(true);
   const [cities, setCities] = useState<string[]>([]);
   const [data, setData] = useState<any>([]);
 
@@ -67,42 +60,8 @@ const WorldClock = () => {
   }, [city]);
 
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: "black" }}>
-      <Stack.Screen
-        options={
-          showBackgroundColor
-            ? {
-                headerTitle: "World Clock",
-                headerLargeTitle: true,
-                headerTintColor: "white",
-                headerRight: () => <HeaderRight cities={cities} />,
-                headerTransparent: true,
-                headerBlurEffect: "extraLight",
-              }
-            : {
-                headerTitle: "World Clock",
-                headerRight: () => <HeaderRight cities={cities} />,
-                headerTransparent: true,
-                headerBlurEffect: "dark",
-              }
-        }
-      />
+    <View style={{ flex: 1, backgroundColor: "black" }}>
       <FlatList
-        onScroll={(e) => {
-          if (e.nativeEvent.contentOffset.y > 15) {
-            setShowBackgroundColor(false);
-          } else {
-            setShowBackgroundColor(true);
-          }
-        }}
-        ListHeaderComponent={
-          <View
-            style={{
-              borderBottomWidth: 1,
-              borderBottomColor: "#1C1C1E",
-            }}
-          />
-        }
         data={data}
         renderItem={({ item }) => {
           return (
@@ -114,8 +73,15 @@ const WorldClock = () => {
           );
         }}
         style={styles.container}
+        contentInsetAdjustmentBehavior="automatic"
       />
-    </SafeAreaView>
+
+      <Stack.Screen
+        options={{
+          headerRight: () => <HeaderRight cities={cities} />,
+        }}
+      />
+    </View>
   );
 };
 

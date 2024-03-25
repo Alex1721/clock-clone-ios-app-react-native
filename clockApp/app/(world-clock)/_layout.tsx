@@ -9,7 +9,17 @@ const Layout = () => {
         headerTintColor: "orange",
       }}
     >
-      <Stack.Screen name="index" />
+      <Stack.Screen
+        name="index"
+        options={{
+          headerTitle: "World Clock",
+          headerTitleStyle: { color: "white" },
+          headerLargeTitle: true,
+          headerTransparent: true,
+          headerShadowVisible: false,
+          headerBlurEffect: "systemChromeMaterial",
+        }}
+      />
       <Stack.Screen
         name="add-clock"
         options={{

@@ -8,7 +8,6 @@ const Layout = () => {
   return (
     <Stack
       screenOptions={{
-        headerStyle: { backgroundColor: "black" },
         headerTintColor: "orange",
         headerShown: true,
       }}
@@ -16,8 +15,11 @@ const Layout = () => {
       <Stack.Screen
         name="alarms"
         options={{
-          headerTitle: "",
+          headerTitle: "Alarms",
+          headerTitleStyle: { color: "white" },
+          headerLargeTitle: true,
           headerTransparent: true,
+          headerBlurEffect: "systemChromeMaterial",
           headerRight: () => (
             <Link href="/add-alarm" asChild>
               <Pressable>
@@ -98,7 +100,7 @@ const Layout = () => {
                   size={24}
                   color="orange"
                 />
-                <Text style={{ color: "orange", fontSize: 18 }}>Back</Text>
+                <Text style={{ color: "orange", fontSize: 20 }}>Back</Text>
               </Pressable>
             </Link>
           ),

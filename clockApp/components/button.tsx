@@ -1,41 +1,42 @@
-import { Text, Pressable, StyleSheet } from "react-native";
+import { Text, Pressable, StyleSheet, View } from "react-native";
 import React from "react";
 
 interface ButtonProps {
-  type: string;
+  name: string;
+  nameColor: string;
+  backgroundColor: string;
+  backgroundColorPressed: string;
   onPress: () => void;
 }
 
-const Button = ({ type, onPress }: ButtonProps) => {
-  const capitalizedType = type.charAt(0).toUpperCase() + type.slice(1);
-  let backgroundColor = "";
-  let backgroundColorPressed = "";
-  let textColor = "";
-
-  if (type === "start") {
-    backgroundColor = "#0B2A12";
-    backgroundColorPressed = "#0A1D0F";
-    textColor = "green";
-  } else if (type === "stop") {
-    backgroundColor = "#340F0C";
-    backgroundColorPressed = "#220D0B";
-    textColor = "red";
-  } else if (type === "reset") {
-    backgroundColor = "#333333";
-    backgroundColorPressed = "#222222";
-    textColor = "white";
-  }
-
+const Button = ({
+  name,
+  nameColor,
+  backgroundColor,
+  backgroundColorPressed,
+  onPress,
+}: ButtonProps) => {
   return (
     <Pressable
+      onPress={onPress}
       style={({ pressed }) => [
         styles.container,
         { backgroundColor: pressed ? backgroundColorPressed : backgroundColor },
       ]}
     >
-      <Text style={[styles.title, { color: textColor }]}>
-        {capitalizedType}
-      </Text>
+      <View
+        style={{
+          borderWidth: 2,
+          borderColor: "black",
+          position: "absolute",
+          top: 2,
+          left: 2,
+          right: 2,
+          bottom: 2,
+          borderRadius: 100,
+        }}
+      />
+      <Text style={{ color: nameColor, fontSize: 20 }}>{name}</Text>
     </Pressable>
   );
 };
@@ -46,7 +47,7 @@ const styles = StyleSheet.create({
   container: {
     height: 90,
     width: 90,
-    borderRadius: 50,
+    borderRadius: 100,
     justifyContent: "center",
     alignItems: "center",
   },

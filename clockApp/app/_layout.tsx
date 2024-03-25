@@ -7,6 +7,7 @@ import { useEffect } from "react";
 import { Ionicons } from "@expo/vector-icons";
 import { DarkTheme, ThemeProvider } from "@react-navigation/native";
 import { Appearance } from "react-native";
+import { BlurView } from "expo-blur";
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -56,9 +57,9 @@ function RootLayoutNav() {
     <Tabs
       screenOptions={{
         headerShown: false,
-        tabBarStyle: { backgroundColor: "black", borderTopWidth: 0 },
         tabBarActiveTintColor: "orange",
         tabBarInactiveTintColor: "#7C7C7C",
+        tabBarStyle: { backgroundColor: "black" },
       }}
     >
       <Tabs.Screen
@@ -68,6 +69,7 @@ function RootLayoutNav() {
             <Ionicons name="globe-outline" size={26} color={color} />
           ),
           tabBarLabel: "World Clock",
+          tabBarStyle: { backgroundColor: "#121313" },
         }}
       />
       <Tabs.Screen
@@ -77,12 +79,13 @@ function RootLayoutNav() {
             <Ionicons name="alarm" size={30} color={color} />
           ),
           tabBarLabel: "Alarms",
+          tabBarStyle: { backgroundColor: "#121313" },
         }}
       />
       <Tabs.Screen
         name="(stopwatch)"
         options={{
-          tabBarIcon: ({ color, size }) => (
+          tabBarIcon: ({ color }) => (
             <Ionicons name="stopwatch" size={30} color={color} />
           ),
           tabBarLabel: "Stopwatch",
@@ -91,7 +94,7 @@ function RootLayoutNav() {
       <Tabs.Screen
         name="(timers)"
         options={{
-          tabBarIcon: ({ color, size }) => (
+          tabBarIcon: ({ color }) => (
             <Ionicons name="timer-outline" size={30} color={color} />
           ),
           tabBarLabel: "Timers",

@@ -1,21 +1,22 @@
-import { View, Text, SafeAreaView, StyleSheet } from "react-native";
+import { View, SafeAreaView, StyleSheet } from "react-native";
 import Colors from "@/constants/Colors";
 import React from "react";
 
+import RingToneList from "@/components/ringtone-list";
+
 const Ringtone = () => {
+  const [selectedTone, setSelectedTone] = React.useState("Radar (per default)");
+  const handleOnPress = (tone: string) => {
+    setSelectedTone(tone);
+  };
+
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: Colors.grey }}>
-      <View style={styles.container}>
-        <Text>Ringtone</Text>
-      </View>
+      <RingToneList selectedTone={selectedTone} onPress={handleOnPress} />
     </SafeAreaView>
   );
 };
 
 export default Ringtone;
 
-const styles = StyleSheet.create({
-  container: {
-    padding: 15,
-  },
-});
+const styles = StyleSheet.create({});

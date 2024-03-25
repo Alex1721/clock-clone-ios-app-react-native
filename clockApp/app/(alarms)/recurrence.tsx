@@ -6,7 +6,8 @@ import {
   Pressable,
   FlatList,
 } from "react-native";
-import React, { useState } from "react";
+
+import React, { useEffect, useState } from "react";
 import Colors from "@/constants/Colors";
 import { Ionicons } from "@expo/vector-icons";
 
@@ -28,7 +29,7 @@ const RenderItem = ({ item, index }: RenderItemProps) => {
       style={({ pressed }) => {
         return [
           {
-            backgroundColor: pressed ? "rgba(0,0,0,0.1)" : "orange",
+            backgroundColor: pressed ? "rgba(255,255,255,0.1)" : "#2C2C2E",
             borderTopLeftRadius: isFirstItem ? 10 : 0,
             borderTopRightRadius: isFirstItem ? 10 : 0,
             borderBottomLeftRadius: isLastItem ? 10 : 0,
@@ -37,7 +38,11 @@ const RenderItem = ({ item, index }: RenderItemProps) => {
         ];
       }}
     >
-      <View style={styles.button}>
+      <View
+        style={
+          isLastItem ? [styles.button, { borderBottomWidth: 0 }] : styles.button
+        }
+      >
         <Text
           style={{
             color: "white",
@@ -47,7 +52,7 @@ const RenderItem = ({ item, index }: RenderItemProps) => {
           {item}
         </Text>
         {selected ? (
-          <Ionicons name="checkmark" size={22} color="black" />
+          <Ionicons name="checkmark" size={22} color="orange" />
         ) : null}
       </View>
     </Pressable>
@@ -64,11 +69,7 @@ const Recurrence = () => {
     "Every Saturday",
     "Every Sunday",
   ];
-  const [selected, setSelected] = useState(false);
 
-  const handleOnPress = () => {
-    setSelected(!selected);
-  };
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: Colors.grey }}>
       <FlatList
@@ -98,6 +99,6 @@ const styles = StyleSheet.create({
     paddingVertical: 12,
     paddingRight: 15,
     borderBottomWidth: 1,
-    borderBottomColor: "rgba(0,0,0,0.1)",
+    borderBottomColor: "rgba(255,255,255,0.1)",
   },
 });

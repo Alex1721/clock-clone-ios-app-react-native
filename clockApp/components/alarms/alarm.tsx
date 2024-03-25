@@ -1,22 +1,38 @@
-import { View, Text, StyleSheet } from "react-native";
-import React from "react";
+import { View, Text, StyleSheet, Switch } from "react-native";
+import React, { useState } from "react";
 
 interface AlarmProps {
   time: string;
   description: string;
+  toggle: boolean;
 }
 
-const Alarm = ({ time, description }: AlarmProps) => {
+const Alarm = ({ time, description, toggle }: AlarmProps) => {
+  const [isEnabled, setIsEnabled] = useState(toggle);
+  const toggleSwitch = () => setIsEnabled((previousState) => !previousState);
+
   return (
     <View style={styles.container}>
-      <View style={{ gap: 3 }}>
+      <View
+        style={{
+          flexDirection: "row",
+          alignItems: "center",
+          justifyContent: "space-between",
+        }}
+      >
         <Text style={{ color: "white", fontSize: 50 }}>
           {time}
           <Text style={{ fontSize: 24 }}>AM</Text>
         </Text>
-        <Text style={{ color: "white", fontSize: 14 }}>{description}</Text>
+        <Switch
+          trackColor={{ false: "#767577", true: "green" }}
+          thumbColor={"white"}
+          ios_backgroundColor="#3e3e3e"
+          onValueChange={toggleSwitch}
+          value={isEnabled}
+        />
       </View>
-      <Text style={{ color: "white" }}>Slider</Text>
+      <Text style={{ color: "white", fontSize: 14 }}>{description}</Text>
     </View>
   );
 };
@@ -25,9 +41,6 @@ export default Alarm;
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "space-between",
     paddingVertical: 15,
     paddingHorizontal: 5,
     borderBottomWidth: 1,

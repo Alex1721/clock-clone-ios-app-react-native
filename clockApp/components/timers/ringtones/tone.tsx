@@ -14,7 +14,7 @@ interface ToneProps {
 
 const Tone = ({ tone, index, selected, onPress }: ToneProps) => {
   const backgroundColor = "#2C2C2E";
-  const backgroundColorPressed = "#220D0B";
+  const backgroundColorPressed = "rgba(255,255,255,0.1)";
 
   return (
     <Pressable
