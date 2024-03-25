@@ -19,6 +19,14 @@ cd clockApp
 npm install
 ```
 
+### Run the app
+
+```bash
+npx expo start -c
+```
+
+## Demo
+
 <!-- start:code block -->
 # Clone this repository
 git clone https://github.com/mfts/papermark.git
