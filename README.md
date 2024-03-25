@@ -1,10 +1,15 @@
 # iOS Clock clone mobile application.
 
-This is an open-source repository sharing an overview of Expo router V2's navigation system by recreating the iOS clock application.
+Welcome to the open-source repository showcasing Expo Router V2's navigation system through the recreation of the iOS clock application.
 
 ## Installation
 
-First, clone this repository:
+To get started, follow these simple steps:
+
+### Clone the Repository
+
+```bash
+git clone https://github.com/mfts/papermark.git
 
 <!-- start:code block -->
 # Clone this repository
