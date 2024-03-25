@@ -30,12 +30,12 @@ npx expo start -c
 
 Downgraded the quality to import the GIFs.
 
-key.![world-clock](https://github.com/Alex1721/clock-clone-ios-app-react-native/assets/73285589/7b0aaef2-3dc0-4cb0-9206-54de64a30d57)
+![world-clock](https://github.com/Alex1721/clock-clone-ios-app-react-native/assets/73285589/7b0aaef2-3dc0-4cb0-9206-54de64a30d57)
 ![timers](https://github.com/Alex1721/clock-clone-ios-app-react-native/assets/73285589/3ed72f70-c1b6-4628-957d-b430766ee42b)
 
 ## APIs
 
-This project includes the utilization of the weather API from API Ninjas. Don't forget to create your account to obtain your personal 
+This project includes the utilization of the weather API from API Ninjas. Don't forget to create your account to obtain your personal key.
 
 ## Contributing
 
