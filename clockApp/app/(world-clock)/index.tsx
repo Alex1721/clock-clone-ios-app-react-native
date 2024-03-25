@@ -6,6 +6,8 @@ import Clock from "@/components/world-clock/clock";
 
 import { Ionicons } from "@expo/vector-icons";
 
+const WEATHER_API_KEY = process.env.WEATHER_API_KEY;
+
 const HeaderRight = ({ cities }: { cities: string[] }) => {
   return (
     <Link
@@ -33,7 +35,7 @@ const WorldClock = () => {
         "https://api.api-ninjas.com/v1/worldtime?city=" + item,
         {
           headers: {
-            "X-Api-Key": "N464mc2+05q91tDRf9z+DQ==rowvHmmcSNcKW7ca",
+            "X-Api-Key": WEATHER_API_KEY as string,
           },
         }
       );
