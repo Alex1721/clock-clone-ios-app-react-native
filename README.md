@@ -27,24 +27,6 @@ npx expo start -c
 
 ## Demo
 
-<!-- start:code block -->
-# Clone this repository
-git clone https://github.com/mfts/papermark.git
-cd papermark
+## Contributing
 
-# Install dependencies
-npm install
-
-# Copy the example .env file
-cp .env.example .env
-
-# Initialize the database
-npx prisma generate
-npx prisma db push
-
-# Run the app
-npm run dev
-
-# Open http://localhost:3000 in your browser
-open http://localhost:3000
-<!-- end:code block -->
+iOS Clock clone is an open-source project and I welcome contributions from the community to enhance the capabilities of Expo Router v2 by recreating all small possible details of the application. If you'd like to contribute, please fork the repository and make changes as you'd like. Pull requests are warmly welcome.
