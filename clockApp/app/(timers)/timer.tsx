@@ -85,8 +85,8 @@ const Timer = () => {
           <View style={styles.timePicker}>
             <DateTimePicker
               value={time}
-              mode="countdown"
-              display="spinner"
+              mode="date"
+              display="inline"
               onChange={(event, selectedDate) => {
                 setTime(selectedDate as Date);
               }}

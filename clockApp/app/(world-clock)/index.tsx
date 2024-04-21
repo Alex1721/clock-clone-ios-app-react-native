@@ -35,7 +35,7 @@ const WorldClock = () => {
         "https://api.api-ninjas.com/v1/worldtime?city=" + item,
         {
           headers: {
-            "X-Api-Key": WEATHER_API_KEY as string,
+            "X-Api-Key": "N464mc2+05q91tDRf9z+DQ==rowvHmmcSNcKW7ca",
           },
         }
       );
